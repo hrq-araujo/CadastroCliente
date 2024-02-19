@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroCliente.MainPage"
+             xmlns:viewmodel="clr-namespace:CadastroCliente.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel">
+
+    <Grid Padding="30,0">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="dotnet_bot.png"
+               HeightRequest="185"
+               Grid.Row="0"
+               Grid.Column="1"
+               Aspect="AspectFit"
+               SemanticProperties.Description="dot net bot in a race car number eight"/>
+
+        <CollectionView Grid.Column="1"
+                        Grid.Row="1"
+                        ItemsSource="{Binding Costumer}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    
+                    <Grid Padding="0,5">
+                        <Frame>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding }"
+                                                      CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding .}"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           FontSize="20"/>
+                        </Frame> 
+                    </Grid>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+
+        <Button x:Name="CounterBtn"
+                Text="Cadastrar Novo Cliente" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Command="{Binding RegisterClickedCommand}"
+                HorizontalOptions="Center" 
+                Grid.Column="1"
+                Grid.Row="2"
+                Margin="0,20,0,20"/>
+    </Grid>
+</ContentPage>

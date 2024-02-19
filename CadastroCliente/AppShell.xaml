@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CadastroCliente.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CadastroCliente"
+    Shell.FlyoutBehavior="Disabled"
+    Title="CadastroCliente">
+
+    <ShellContent
+        Title="2º Teste Técnico - Henrique - BTG PACTUAL"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>

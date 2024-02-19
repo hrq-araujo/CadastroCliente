@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroCliente.RegisterPageView"
+             Title="Editar Dados"
+             xmlns:viewmodel="clr-namespace:CadastroCliente.ViewModels"
+             x:DataType="viewmodel:RegisterPageViewModel">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <!--NAME-->
+        <StackLayout Grid.Column="1"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="0"
+                     Margin="10">
+            <Label Text="Nome"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Margin="10"/>
+            <Entry/>
+        </StackLayout>
+
+        <!--LAST NAME-->
+        <StackLayout Grid.Column="3"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="0"
+                     Margin="10">
+            <Label Text="Sobrenome"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Margin="10"/>
+                <Entry/>
+        </StackLayout>
+        
+        <!--AGE-->
+        <StackLayout Grid.Column="1"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="1"
+                     Margin="10">
+            <Label Text="Idade"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Margin="10"/>
+            <Entry/>
+        </StackLayout>
+        
+        <!--ADRESS-->
+        <StackLayout Grid.Column="3"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="1"
+                     Margin="10">
+            <Label Text="Endereço"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Margin="10"/>
+            <Entry/>
+        </StackLayout>
+
+        <!--BUTTONS-->
+        <Button Text="Cancelar"
+                Grid.Row="2"
+                Grid.Column="2"
+                Margin="10"
+                Command="{Binding GoBackCommand}"/>
+
+        <Button Text="Deletar"
+                BackgroundColor="DarkRed"
+                Grid.Row="2"
+                Grid.Column="3"
+                Margin="10"
+                Command="{Binding GoBackCommand}"/>
+
+        <Button Text="Salvar"
+                BackgroundColor="DarkGreen"
+                Grid.Row="3"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Margin="10"
+                Command="{Binding GoBackCommand}"/>
+    </Grid>
+</ContentPage>
