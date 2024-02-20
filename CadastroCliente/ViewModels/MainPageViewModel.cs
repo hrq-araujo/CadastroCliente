@@ -15,26 +15,6 @@ namespace CadastroCliente.ViewModels
         [ObservableProperty]
         public ObservableCollection<Costumer> costumers;
 
-        private Costumer selectedCostumer;
-        public Costumer SelectedCostumer
-        {
-            get
-            {
-                return selectedCostumer;
-            }
-            set
-            {
-                if(selectedCostumer != value)
-                {
-                    selectedCostumer = value;
-                    OnPropertyChanged("SelectedCostumer");
-
-                    if(SelectedCostumer != null)
-                        UpdateCostumerNavigation(SelectedCostumer, this);
-                }
-            }
-        }
-
         public MainPageViewModel()
         {
             costumers = new ObservableCollection<Costumer>();
@@ -72,17 +52,21 @@ namespace CadastroCliente.ViewModels
                 );
         }
 
-        public async void UpdateCostumerNavigation(Costumer selectedCostumer, MainPageViewModel mainPageViewModel)
+        [RelayCommand]
+        async Task CostumerClicked(Costumer selectedCostumer)
         {
-            await Shell.Current.GoToAsync(nameof(UpdatePageView), 
-            new Dictionary<string, object>
+            if (selectedCostumer is null)
+                return;
+            else
             {
-                ["Costumer"] = selectedCostumer,
-                ["MainPageViewModel"] = mainPageViewModel
+                await Shell.Current.GoToAsync(nameof(UpdatePageView),
+                new Dictionary<string, object>
+                {
+                    ["Costumer"] = selectedCostumer,
+                    ["MainPageViewModel"] = this
+                }
+                );
             }
-            );
         }
-
-
     }
 }

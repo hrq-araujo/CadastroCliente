@@ -39,7 +39,6 @@
                    VerticalOptions="StartAndExpand"/>
             <CollectionView Grid.Column="1"
                             Grid.Row="2"
-                            SelectedItem="{Binding SelectedCostumer}"
                             ItemsSource="{Binding Costumers}"
                             SelectionMode="Single">
                 <CollectionView.EmptyView>
@@ -68,6 +67,10 @@
                         <Grid Padding="0,5">
                             <Frame BackgroundColor="#001861"
                                    BorderColor="#000661">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=CostumerClickedCommand}"/>
+                                </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
