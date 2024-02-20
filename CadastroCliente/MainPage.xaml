@@ -29,6 +29,9 @@
                SemanticProperties.Description="BTG Pactual - O maior banco de investimentos da América Latina"/>
 
         <Label Text="Lista de Clientes:"
+               FontFamily="Montserrat"
+               FontSize="15"
+               FontAttributes="Bold"
                HeightRequest="20"
                Grid.Row="1"
                Grid.Column="1"
@@ -46,6 +49,7 @@
                         <Frame BackgroundColor="#001861"
                                BorderColor="#000661">
                             <Label Text="{Binding Name}"
+                                   FontFamily="Montserrat"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center"
                                    FontSize="20"/>
@@ -60,6 +64,11 @@
 
         <Button x:Name="CounterBtn"
                 Text="Cadastrar Novo Cliente"
+                FontFamily="Monserrat"
+                FontAttributes="Bold"
+                BackgroundColor="#add8e6"
+                BorderWidth="2"
+                BorderColor="#8aacb8"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Command="{Binding RegisterClickedCommand}"
                 HorizontalOptions="Center" 

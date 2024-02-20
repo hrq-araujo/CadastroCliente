@@ -28,8 +28,11 @@
                      Grid.Row="0"
                      Margin="10">
             <Label Text="Nome"
+                   FontFamily="Montserrat"
+                   FontSize="15"
+                   FontAttributes="Bold"
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center"
+                   HorizontalOptions="Start"
                    Margin="10"/>
             <Entry Text="{Binding Costumer.Name}"/>
         </StackLayout>
@@ -40,8 +43,11 @@
                      Grid.Row="0"
                      Margin="10">
             <Label Text="Sobrenome"
+                   FontFamily="Montserrat"
+                   FontSize="15"
+                   FontAttributes="Bold"
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center" 
+                   HorizontalOptions="Start" 
                    Margin="10"/>
             <Entry Text="{Binding Costumer.LastName}"/>
         </StackLayout>
@@ -52,8 +58,11 @@
                      Grid.Row="1"
                      Margin="10">
             <Label Text="Idade"
+                   FontFamily="Montserrat"
+                   FontSize="15"
+                   FontAttributes="Bold"
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center"
+                   HorizontalOptions="Start"
                    Margin="10"/>
             <Entry Text="{Binding Costumer.Age}"/>
         </StackLayout>
@@ -64,20 +73,36 @@
                      Grid.Row="1"
                      Margin="10">
             <Label Text="Endereço"
+                   FontFamily="Montserrat"
+                   FontSize="15"
+                   FontAttributes="Bold"
                    VerticalOptions="Center" 
-                   HorizontalOptions="Center" 
+                   HorizontalOptions="Start" 
                    Margin="10"/>
             <Entry Text="{Binding Costumer.Address}"/>
         </StackLayout>
 
         <!--BUTTONS-->
         <Button Text="Cancelar"
+                FontFamily="Monserrat"
+                FontAttributes="Bold"
+                FontSize="15"
+                TextColor="#E5E5E5"
+                BackgroundColor="Transparent"
+                BorderColor="#E5E5E5"
+                BorderWidth="2"
                 Grid.Row="2"
                 Grid.Column="2"
                 Margin="10"
                 Command="{Binding GoBackCommand}"/>
 
         <Button Text="Deletar"
+                TextColor="#E5E5E5"
+                FontFamily="Monserrat"
+                FontAttributes="Bold"
+                FontSize="15"
+                BorderColor="#6f0000"
+                BorderWidth="2"
                 BackgroundColor="DarkRed"
                 Grid.Row="2"
                 Grid.Column="3"
@@ -85,6 +110,12 @@
                 Command="{Binding DeleteCommand}"/>
 
         <Button Text="Salvar"
+                TextColor="#E5E5E5"
+                FontFamily="Monserrat"
+                FontAttributes="Bold"
+                FontSize="15"
+                BorderColor="#005000"
+                BorderWidth="2"
                 BackgroundColor="DarkGreen"
                 Grid.Row="3"
                 Grid.Column="2"
