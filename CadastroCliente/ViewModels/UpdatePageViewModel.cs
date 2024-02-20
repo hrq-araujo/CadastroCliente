@@ -39,17 +39,11 @@ namespace CadastroCliente.ViewModels
         [RelayCommand]
         async Task Update()
         {
-            if (CheckIfEntryIsEmpty())
+            if (IsEntryEmpty() && IsNumberValid() && !EntryContainsNumber())
             {
-                if (CheckIfNumberIsValid()) { 
-                    UpdateCostumerList();
-                    await Shell.Current.GoToAsync("..");
-                }
-                else
-                    await GeneralHelper.InvalidInputAlert();
+                UpdateCostumerList();
+                await Shell.Current.GoToAsync("..");
             }
-            else
-                await GeneralHelper.EmptyInputAlert();
         }
 
         [RelayCommand]
@@ -59,14 +53,36 @@ namespace CadastroCliente.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        private bool CheckIfEntryIsEmpty() => !String.IsNullOrEmpty(costumer.Name) && !String.IsNullOrEmpty(costumer.LastName) && !String.IsNullOrEmpty(costumer.Address);
+        private bool IsEntryEmpty() 
+        { 
+            if(!String.IsNullOrEmpty(costumer.Name) && !String.IsNullOrEmpty(costumer.LastName) && !String.IsNullOrEmpty(costumer.Address))
+                return true;
+            else {
+                GeneralHelper.EmptyInputAlert();
+                return false;
+            }
+        }
 
-        private bool CheckIfNumberIsValid()
+        private bool EntryContainsNumber()
+        {
+            if (costumer.Name.Any(char.IsDigit) || costumer.LastName.Any(char.IsDigit))
+            {
+                GeneralHelper.InvalidTextInputAlert();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private bool IsNumberValid()
         {
             if(costumer.Age >= 0 && costumer.Age < 130)
                 return true;
-            else
+            else 
+            {
+                GeneralHelper.InvalidNumericalInputAlert();
                 return false;
+            }
         }
 
         private void UpdateCostumerList()

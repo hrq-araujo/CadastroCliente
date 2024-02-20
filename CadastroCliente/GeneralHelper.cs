@@ -19,11 +19,18 @@ namespace CadastroCliente
             return true;
         }
 
-        public static async Task InvalidInputAlert()
+        public static async Task InvalidNumericalInputAlert()
         {
             await Shell.Current.CurrentPage.DisplayAlert(
                 "Erro",
-                "Você inseriu algum caractere inválido. Lembre-se que as entradas só aceitam números inteiros positivos.",
+                "Você inseriu algum caractere inválido. Lembre-se que o campo Idade só aceita números inteiros positivos.",
+                "OK");
+        }
+        public static async Task InvalidTextInputAlert()
+        {
+            await Shell.Current.CurrentPage.DisplayAlert(
+                "Erro",
+                "Você inseriu algum caractere inválido. Lembre-se que os campos Nome e Sobrenome só aceitam letras e acentos.",
                 "OK");
         }
 

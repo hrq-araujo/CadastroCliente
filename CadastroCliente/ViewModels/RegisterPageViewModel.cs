@@ -46,36 +46,52 @@ namespace CadastroCliente.ViewModels
         [RelayCommand]
         async Task Save()
         {
-            if (CheckIfEntryIsEmpty())
+            if (IsEntryEmpty() && IsNumberValid() && !EntryContainsNumber())
             {
-                if (CheckIfNumberIsValid())
+                newCostumer = new Costumer
                 {
-                    newCostumer = new Costumer 
-                    {
-                        Name = newName,
-                        LastName= newLastName,
-                        Address = newAddress,
-                        Age = newAge
-                    };
-                    mainPageViewModel.costumers.Add(newCostumer);
+                    Name = newName,
+                    LastName = newLastName,
+                    Address = newAddress,
+                    Age = newAge
+                };
+                mainPageViewModel.costumers.Add(newCostumer);
 
-                    await Shell.Current.GoToAsync("..");
-                }
-                else
-                    await GeneralHelper.InvalidInputAlert();
+                await Shell.Current.GoToAsync("..");
             }
-            else
-                await GeneralHelper.EmptyInputAlert();
         }
 
-        private bool CheckIfEntryIsEmpty() => !String.IsNullOrEmpty(newName) && !String.IsNullOrEmpty(newLastName) && !String.IsNullOrEmpty(NewAddress);
+        private bool IsEntryEmpty()
+        {
+            if (!String.IsNullOrEmpty(NewName) && !String.IsNullOrEmpty(NewLastName) && !String.IsNullOrEmpty(NewAddress))
+                return true;
+            else
+            {
+                GeneralHelper.EmptyInputAlert();
+                return false;
+            }
+        }
 
-        private bool CheckIfNumberIsValid()
+        private bool EntryContainsNumber()
+        {
+            if (NewName.Any(char.IsDigit) || NewLastName.Any(char.IsDigit))
+            {
+                GeneralHelper.InvalidTextInputAlert();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private bool IsNumberValid()
         {
             if (NewAge >= 0 && NewAge < 130)
                 return true;
             else
+            {
+                GeneralHelper.InvalidNumericalInputAlert();
                 return false;
+            }
         }
     }
 }
