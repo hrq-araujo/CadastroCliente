@@ -30,13 +30,6 @@ namespace CadastroCliente.ViewModels
 
         Costumer newCostumer;
 
-
-        public RegisterPageViewModel()
-        {
-        }
-
-
-
         [RelayCommand]
         async Task GoBack()
         {

@@ -19,12 +19,6 @@ namespace CadastroCliente.ViewModels
         [ObservableProperty]
         MainPageViewModel mainPageViewModel;
 
-
-        public UpdatePageViewModel()
-        {
-            
-        }
-
         [RelayCommand]
         async Task Delete()
         {
@@ -63,6 +57,7 @@ namespace CadastroCliente.ViewModels
             }
         }
 
+        #region ENTRY QUALITY METHODS
         private bool EntryContainsNumber()
         {
             if (costumer.Name.Any(char.IsDigit) || costumer.LastName.Any(char.IsDigit))
@@ -84,6 +79,7 @@ namespace CadastroCliente.ViewModels
                 return false;
             }
         }
+        #endregion
 
         private void UpdateCostumerList()
         {
