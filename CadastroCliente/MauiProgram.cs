@@ -25,6 +25,9 @@ namespace CadastroCliente
             builder.Services.AddTransient<RegisterPageView>();
             builder.Services.AddTransient<RegisterPageViewModel>();
 
+            builder.Services.AddTransient<UpdatePageView>();
+            builder.Services.AddTransient<UpdatePageViewModel>();
+
             return builder.Build();
         }
     }

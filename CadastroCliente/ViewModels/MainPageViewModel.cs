@@ -79,7 +79,12 @@ namespace CadastroCliente.ViewModels
         [RelayCommand]
         async Task RegisterClicked()
         {
-            await Shell.Current.GoToAsync(nameof(RegisterPageView));
+            await Shell.Current.GoToAsync(nameof(RegisterPageView),
+                new Dictionary<string, object>
+                {
+                    ["MainPageViewModel"] = this
+                }
+                );
         }
 
         public async void UpdateCostumerNavigation(Costumer costumer, MainPageViewModel mainPageViewModel)

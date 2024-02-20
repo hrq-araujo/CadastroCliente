@@ -9,53 +9,41 @@ using System.Threading.Tasks;
 
 namespace CadastroCliente.ViewModels
 {
-
+    [QueryProperty(nameof(Costumer), nameof(Costumer))]
     [QueryProperty(nameof(MainPageViewModel), nameof(MainPageViewModel))]
-    public partial class RegisterPageViewModel : ObservableObject
+    public partial class UpdatePageViewModel : ObservableObject
     {
+        [ObservableProperty]
+        Costumer costumer;
+
         [ObservableProperty]
         MainPageViewModel mainPageViewModel;
 
         [ObservableProperty]
-        public string newName;
-
-        [ObservableProperty]
-        string newLastName;
-
-        [ObservableProperty]
-        int newAge;
-
-        [ObservableProperty]
-        string newAddress;
-
-        Costumer newCostumer;
-
-
-        public RegisterPageViewModel()
-        {
-        }
-
-
+        Entry nameEntry;
 
         [RelayCommand]
-        async Task GoBack()
+        async Task Delete()
         {
+            mainPageViewModel.Costumers.Remove(costumer);
             await Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]
-        async Task Save()
+        async Task Update()
         {
-            newCostumer = new Costumer 
+            int index = mainPageViewModel.Costumers.IndexOf(costumer);
+            Costumer costumerUpdated = new Costumer
             {
-                Name = newName,
-                LastName= newLastName,
-                Address = newAddress,
-                Age = newAge
+                Name = nameEntry.Text
             };
 
-            mainPageViewModel.costumers.Add(newCostumer);
+            await Shell.Current.GoToAsync("..");
+        }
 
+        [RelayCommand]
+        async Task GoBack()
+        {
             await Shell.Current.GoToAsync("..");
         }
     }
