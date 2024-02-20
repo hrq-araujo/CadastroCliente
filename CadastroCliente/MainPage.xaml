@@ -6,94 +6,141 @@
     <ContentPage.BindingContext>
         <viewmodel:MainPageViewModel/>
     </ContentPage.BindingContext>
-
-    <Grid Padding="30,0">
+    <ScrollView>
+        <Grid Padding="30,0">
         
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="100"/>
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
 
-        <Image Source="btg_logo_blue.png"
-               HeightRequest="120"
-               Grid.Row="0"
-               Grid.Column="1"
-               Aspect="AspectFit"
-               SemanticProperties.Description="BTG Pactual - O maior banco de investimentos da América Latina"/>
+            <Image Source="btg_logo_blue.png"
+                   HeightRequest="120"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="BTG Pactual - O maior banco de investimentos da América Latina"/>
 
-        <Label Text="Lista de Clientes:"
-               FontFamily="Montserrat"
-               FontSize="15"
-               FontAttributes="Bold"
-               HeightRequest="20"
-               Grid.Row="1"
-               Grid.Column="1"
-               HorizontalOptions="StartAndExpand"
-               VerticalOptions="StartAndExpand"/>
-        <CollectionView Grid.Column="1"
-                        Grid.Row="2"
-                        SelectedItem="{Binding SelectedCostumer}"
-                        ItemsSource="{Binding Costumers}"
-                        SelectionMode="Single">
-            <CollectionView.EmptyView>
-                <ContentView>
-                    <StackLayout HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="CenterAndExpand">
-                        <Label Text="Você não possui nenhum cliente cadastrado."
-                           Margin="10,25,10,10"
-                           FontFamily="Montserrat"
-                           FontAttributes="Bold"
-                           FontSize="18"
-                           HorizontalOptions="Fill"
-                           HorizontalTextAlignment="Center" />
-                        <Label Text="Tente cadastrar um novo cliente abaixo:"
-                           FontAttributes="Italic"
-                           FontFamily="Montserrat"
-                           FontSize="13"
-                           HorizontalOptions="Fill"
-                           HorizontalTextAlignment="Center" />
-                    </StackLayout>
-                </ContentView>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
+            <Label Text="Lista de Clientes:"
+                   FontFamily="Montserrat"
+                   FontSize="15"
+                   FontAttributes="Bold"
+                   HeightRequest="20"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="StartAndExpand"/>
+            <CollectionView Grid.Column="1"
+                            Grid.Row="2"
+                            SelectedItem="{Binding SelectedCostumer}"
+                            ItemsSource="{Binding Costumers}"
+                            SelectionMode="Single">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand">
+                            <Label Text="Você não possui nenhum cliente cadastrado."
+                               Margin="10,25,10,10"
+                               FontFamily="Montserrat"
+                               FontAttributes="Bold"
+                               FontSize="18"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center" />
+                            <Label Text="Tente cadastrar um novo cliente abaixo:"
+                               FontAttributes="Italic"
+                               FontFamily="Montserrat"
+                               FontSize="13"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
                     
-                    <Grid Padding="0,5">
-                        <Frame BackgroundColor="#001861"
-                               BorderColor="#000661">
-                            <Label Text="{Binding Name}"
-                                   FontFamily="Montserrat"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   FontSize="20"/>
-                         </Frame>
-                    </Grid>
+                        <Grid Padding="0,5">
+                            <Frame BackgroundColor="#001861"
+                                   BorderColor="#000661">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-        </CollectionView>
+                                    <HorizontalStackLayout Grid.Row="0"
+                                                           Grid.Column="0"
+                                                           Grid.ColumnSpan="2">
+                                        <Label Text="{Binding Name}"
+                                               FontFamily="Montserrat"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               FontSize="20"
+                                               Margin="5"/>
+                                        <Label Text="{Binding LastName}"
+                                                FontFamily="Montserrat"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                FontSize="20"/>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Grid.Row="1"
+                                                           Grid.Column="0">
+                                        <Label Text="{Binding Age}"
+                                           FontFamily="Montserrat"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           FontSize="20"
+                                           Margin="5"/>
+                                        <Label Text="anos"
+                                               FontFamily="Montserrat"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               FontSize="20"/>
+                                    </HorizontalStackLayout>
+                                    <Label Text="{Binding Address}"
+                                           FontFamily="Montserrat"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"
+                                           FontSize="20"
+                                           Grid.Row="2"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="2"
+                                           Margin="5"/>
+                                </Grid>
+                             </Frame>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
 
 
-        <Button x:Name="CounterBtn"
-                Text="Cadastrar Novo Cliente"
-                FontFamily="Monserrat"
-                FontAttributes="Bold"
-                BackgroundColor="#add8e6"
-                BorderWidth="2"
-                BorderColor="#8aacb8"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding RegisterClickedCommand}"
-                HorizontalOptions="Center" 
-                Grid.Column="1"
-                Grid.Row="3"
-                Margin="0,20,0,20"/>
-    </Grid>
+            <Button x:Name="CounterBtn"
+                    Text="Cadastrar Novo Cliente"
+                    FontFamily="Monserrat"
+                    FontAttributes="Bold"
+                    BackgroundColor="#add8e6"
+                    BorderWidth="2"
+                    BorderColor="#8aacb8"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Command="{Binding RegisterClickedCommand}"
+                    HorizontalOptions="Center" 
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Margin="0,20,0,20"/>
+        </Grid>
+    </ScrollView>
 </ContentPage>

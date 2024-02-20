@@ -46,16 +46,36 @@ namespace CadastroCliente.ViewModels
         [RelayCommand]
         async Task Save()
         {
-            newCostumer = new Costumer 
+            if (CheckIfEntryIsEmpty())
             {
-                Name = newName,
-                LastName= newLastName,
-                Address = newAddress,
-                Age = newAge
-            };
-            mainPageViewModel.costumers.Add(newCostumer);
+                if (CheckIfNumberIsValid())
+                {
+                    newCostumer = new Costumer 
+                    {
+                        Name = newName,
+                        LastName= newLastName,
+                        Address = newAddress,
+                        Age = newAge
+                    };
+                    mainPageViewModel.costumers.Add(newCostumer);
 
-            await Shell.Current.GoToAsync("..");
+                    await Shell.Current.GoToAsync("..");
+                }
+                else
+                    await GeneralHelper.InvalidInputAlert();
+            }
+            else
+                await GeneralHelper.EmptyInputAlert();
+        }
+
+        private bool CheckIfEntryIsEmpty() => !String.IsNullOrEmpty(newName) && !String.IsNullOrEmpty(newLastName) && !String.IsNullOrEmpty(NewAddress);
+
+        private bool CheckIfNumberIsValid()
+        {
+            if (NewAge >= 0 && NewAge < 130)
+                return true;
+            else
+                return false;
         }
     }
 }

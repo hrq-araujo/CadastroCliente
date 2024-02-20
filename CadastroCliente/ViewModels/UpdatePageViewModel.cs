@@ -28,26 +28,51 @@ namespace CadastroCliente.ViewModels
         [RelayCommand]
         async Task Delete()
         {
-            mainPageViewModel.Costumers.Remove(costumer);
-            await Shell.Current.GoToAsync("..");
+            await GeneralHelper.ConfirmDeleteAlert();
+            if (GeneralHelper.confirmDelete) 
+            { 
+                mainPageViewModel.Costumers.Remove(costumer);
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
         [RelayCommand]
         async Task Update()
         {
-            int index = mainPageViewModel.Costumers.IndexOf(costumer);
-
-            Console.WriteLine(costumer.Name);
-            mainPageViewModel.Costumers[index] = costumer;
-
-            await Shell.Current.GoToAsync("..");
+            if (CheckIfEntryIsEmpty())
+            {
+                if (CheckIfNumberIsValid()) { 
+                    UpdateCostumerList();
+                    await Shell.Current.GoToAsync("..");
+                }
+                else
+                    await GeneralHelper.InvalidInputAlert();
+            }
+            else
+                await GeneralHelper.EmptyInputAlert();
         }
 
         [RelayCommand]
         async Task GoBack()
         {
+            Console.WriteLine(mainPageViewModel.costumers[0].Name);
             await Shell.Current.GoToAsync("..");
-            mainPageViewModel.SelectedCostumer = null;
+        }
+
+        private bool CheckIfEntryIsEmpty() => !String.IsNullOrEmpty(costumer.Name) && !String.IsNullOrEmpty(costumer.LastName) && !String.IsNullOrEmpty(costumer.Address);
+
+        private bool CheckIfNumberIsValid()
+        {
+            if(costumer.Age >= 0 && costumer.Age < 130)
+                return true;
+            else
+                return false;
+        }
+
+        private void UpdateCostumerList()
+        {
+            int index = mainPageViewModel.Costumers.IndexOf(costumer);
+            mainPageViewModel.Costumers[index] = costumer;
         }
     }
 }
