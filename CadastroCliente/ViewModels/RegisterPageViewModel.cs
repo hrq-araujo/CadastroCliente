@@ -54,6 +54,8 @@ namespace CadastroCliente.ViewModels
             }
         }
 
+
+        #region ENTRY QUALITY METHODS
         private bool IsEntryEmpty()
         {
             if (!String.IsNullOrEmpty(NewName) && !String.IsNullOrEmpty(NewLastName) && !String.IsNullOrEmpty(NewAddress))
@@ -86,5 +88,6 @@ namespace CadastroCliente.ViewModels
                 return false;
             }
         }
+        #endregion
     }
 }

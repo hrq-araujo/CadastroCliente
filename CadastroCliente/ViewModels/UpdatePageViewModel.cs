@@ -47,6 +47,7 @@ namespace CadastroCliente.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
+        #region ENTRY QUALITY METHODS
         private bool IsEntryEmpty() 
         { 
             if(!String.IsNullOrEmpty(costumer.Name) && !String.IsNullOrEmpty(costumer.LastName) && !String.IsNullOrEmpty(costumer.Address))
@@ -57,7 +58,6 @@ namespace CadastroCliente.ViewModels
             }
         }
 
-        #region ENTRY QUALITY METHODS
         private bool EntryContainsNumber()
         {
             if (costumer.Name.Any(char.IsDigit) || costumer.LastName.Any(char.IsDigit))
