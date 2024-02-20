@@ -12,26 +12,87 @@ namespace CadastroCliente.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
+        public ObservableCollection<string> costumerList;
+
         [ObservableProperty]
-        ObservableCollection<string> costumer; // mudar para <Costumer>:
+        public ObservableCollection<Costumer> costumers;
+
+        private Costumer selectedCostumer;
+        public Costumer SelectedCostumer
+        {
+            get
+            {
+                return selectedCostumer;
+            }
+            set
+            {
+                if(selectedCostumer != value)
+                {
+                    selectedCostumer = value;
+                    OnPropertyChanged("SelectedCostumer");
+
+                    if(SelectedCostumer != null)
+                    {
+                        UpdateCostumerNavigation(SelectedCostumer, this);
+                    }
+                }
+            }
+        }
 
         public MainPageViewModel()
         {
-            costumer = new ObservableCollection<string>(); // <Costumer>
-
-            Costumer basicCostumers = new Costumer();
-            basicCostumers.Name = "Henrique";
-
-            costumer.Add("teste"); //vai ser as bases de um costumer
+            costumers = new ObservableCollection<Costumer>();
+            costumerList = new ObservableCollection<string>();
+            AddBaseCostumers();
+            UpdateList();
         }
 
+        public void UpdateList()
+        {
+            foreach (Costumer c in costumers)
+            {
+                costumerList.Add(c.Name);
+            }
+        }
+
+
+        private void AddBaseCostumers()
+        {
+            costumers = new ObservableCollection<Costumer> {
+                new Costumer
+                {
+                    Name = "Henrique",
+                    LastName = "Araujo",
+                    Age = 24,
+                    Address = "Av Parana, 1627"
+                },
+                new Costumer
+                {
+                    Name = "Caroline",
+                    LastName = "Pintinha",
+                    Age = 23,
+                    Address = "Av Campos Sales, 299"
+                }
+            };
+        }
 
         [RelayCommand]
         async Task RegisterClicked()
         {
-            Console.WriteLine("yeah");
-
             await Shell.Current.GoToAsync(nameof(RegisterPageView));
         }
+
+        public async void UpdateCostumerNavigation(Costumer costumer, MainPageViewModel mainPageViewModel)
+        {
+            await Shell.Current.GoToAsync(nameof(RegisterPageView), 
+            new Dictionary<string, object>
+            {
+                ["Costumer"] = costumer,
+                ["MainPageViewModel"] = mainPageViewModel
+            }
+            );
+        }
+
+
     }
 }

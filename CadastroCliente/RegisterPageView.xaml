@@ -31,7 +31,7 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    Margin="10"/>
-            <Entry/>
+            <Entry Text="{Binding Costumer.Name}"/>
         </StackLayout>
 
         <!--LAST NAME-->
@@ -43,7 +43,7 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" 
                    Margin="10"/>
-                <Entry/>
+            <Entry Text="{Binding Costumer.LastName}"/>
         </StackLayout>
         
         <!--AGE-->
@@ -55,7 +55,7 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    Margin="10"/>
-            <Entry/>
+            <Entry Text="{Binding Costumer.Age}"/>
         </StackLayout>
         
         <!--ADRESS-->
@@ -67,13 +67,14 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" 
                    Margin="10"/>
-            <Entry/>
+            <Entry Text="{Binding Costumer.Address}"/>
         </StackLayout>
 
         <!--BUTTONS-->
         <Button Text="Cancelar"
                 Grid.Row="2"
                 Grid.Column="2"
+                Grid.ColumnSpan="{Binding CancelButtonColumnSpan}"
                 Margin="10"
                 Command="{Binding GoBackCommand}"/>
 
@@ -82,7 +83,9 @@
                 Grid.Row="2"
                 Grid.Column="3"
                 Margin="10"
-                Command="{Binding GoBackCommand}"/>
+                IsEnabled="{Binding IsDeleteButtonEnabled}"
+                IsVisible="{Binding IsDeleteButtonEnabled}"
+                Command="{Binding DeleteCommand}"/>
 
         <Button Text="Salvar"
                 BackgroundColor="DarkGreen"
