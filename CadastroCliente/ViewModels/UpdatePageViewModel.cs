@@ -19,8 +19,11 @@ namespace CadastroCliente.ViewModels
         [ObservableProperty]
         MainPageViewModel mainPageViewModel;
 
-        [ObservableProperty]
-        Entry nameEntry;
+
+        public UpdatePageViewModel()
+        {
+            
+        }
 
         [RelayCommand]
         async Task Delete()
@@ -33,10 +36,9 @@ namespace CadastroCliente.ViewModels
         async Task Update()
         {
             int index = mainPageViewModel.Costumers.IndexOf(costumer);
-            Costumer costumerUpdated = new Costumer
-            {
-                Name = nameEntry.Text
-            };
+
+            Console.WriteLine(costumer.Name);
+            mainPageViewModel.Costumers[index] = costumer;
 
             await Shell.Current.GoToAsync("..");
         }
@@ -45,6 +47,7 @@ namespace CadastroCliente.ViewModels
         async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
+            mainPageViewModel.SelectedCostumer = null;
         }
     }
 }

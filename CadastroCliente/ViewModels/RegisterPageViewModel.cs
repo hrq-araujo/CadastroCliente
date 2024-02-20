@@ -53,7 +53,6 @@ namespace CadastroCliente.ViewModels
                 Address = newAddress,
                 Age = newAge
             };
-
             mainPageViewModel.costumers.Add(newCostumer);
 
             await Shell.Current.GoToAsync("..");

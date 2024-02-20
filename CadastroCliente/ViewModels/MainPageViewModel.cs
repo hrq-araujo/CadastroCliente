@@ -12,8 +12,6 @@ namespace CadastroCliente.ViewModels
 {
     public partial class MainPageViewModel : ObservableObject
     {
-        public ObservableCollection<string> costumerList;
-
         [ObservableProperty]
         public ObservableCollection<Costumer> costumers;
 
@@ -42,19 +40,8 @@ namespace CadastroCliente.ViewModels
         public MainPageViewModel()
         {
             costumers = new ObservableCollection<Costumer>();
-            costumerList = new ObservableCollection<string>();
             AddBaseCostumers();
-            UpdateList();
         }
-
-        public void UpdateList()
-        {
-            foreach (Costumer c in costumers)
-            {
-                costumerList.Add(c.Name);
-            }
-        }
-
 
         private void AddBaseCostumers()
         {
@@ -87,12 +74,12 @@ namespace CadastroCliente.ViewModels
                 );
         }
 
-        public async void UpdateCostumerNavigation(Costumer costumer, MainPageViewModel mainPageViewModel)
+        public async void UpdateCostumerNavigation(Costumer selectedCostumer, MainPageViewModel mainPageViewModel)
         {
-            await Shell.Current.GoToAsync(nameof(RegisterPageView), 
+            await Shell.Current.GoToAsync(nameof(UpdatePageView), 
             new Dictionary<string, object>
             {
-                ["Costumer"] = costumer,
+                ["Costumer"] = selectedCostumer,
                 ["MainPageViewModel"] = mainPageViewModel
             }
             );
