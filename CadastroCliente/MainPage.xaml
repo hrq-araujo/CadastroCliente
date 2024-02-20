@@ -42,6 +42,26 @@
                         SelectedItem="{Binding SelectedCostumer}"
                         ItemsSource="{Binding Costumers}"
                         SelectionMode="Single">
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand">
+                        <Label Text="Você não possui nenhum cliente cadastrado."
+                           Margin="10,25,10,10"
+                           FontFamily="Montserrat"
+                           FontAttributes="Bold"
+                           FontSize="18"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Center" />
+                        <Label Text="Tente cadastrar um novo cliente abaixo:"
+                           FontAttributes="Italic"
+                           FontFamily="Montserrat"
+                           FontSize="13"
+                           HorizontalOptions="Fill"
+                           HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     

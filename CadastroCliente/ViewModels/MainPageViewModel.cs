@@ -30,9 +30,7 @@ namespace CadastroCliente.ViewModels
                     OnPropertyChanged("SelectedCostumer");
 
                     if(SelectedCostumer != null)
-                    {
                         UpdateCostumerNavigation(SelectedCostumer, this);
-                    }
                 }
             }
         }
