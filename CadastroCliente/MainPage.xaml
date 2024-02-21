@@ -73,6 +73,7 @@
                                 </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
@@ -83,8 +84,17 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
+                                    <Image Source="user_icon.png"
+                                           Aspect="AspectFit"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           Grid.RowSpan="3"
+                                           WidthRequest="50"
+                                           HeightRequest="50"
+                                           Margin="10,10,15,10"/>
+                                    
                                     <HorizontalStackLayout Grid.Row="0"
-                                                           Grid.Column="0"
+                                                           Grid.Column="1"
                                                            Grid.ColumnSpan="2">
                                         <Label Text="{Binding Name}"
                                                FontFamily="Montserrat"
@@ -99,26 +109,29 @@
                                                 FontSize="20"/>
                                     </HorizontalStackLayout>
                                     <HorizontalStackLayout Grid.Row="1"
-                                                           Grid.Column="0">
+                                                           Grid.Column="1">
                                         <Label Text="{Binding Age}"
                                            FontFamily="Montserrat"
+                                               FontAttributes="Italic"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"
-                                           FontSize="20"
+                                           FontSize="13"
                                            Margin="5"/>
                                         <Label Text="anos"
+                                               FontAttributes="Italic"
                                                FontFamily="Montserrat"
                                                VerticalOptions="Center"
                                                HorizontalOptions="Center"
-                                               FontSize="20"/>
+                                               FontSize="13"/>
                                     </HorizontalStackLayout>
                                     <Label Text="{Binding Address}"
                                            FontFamily="Montserrat"
+                                           FontAttributes="Italic"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Start"
-                                           FontSize="20"
+                                           FontSize="13"
                                            Grid.Row="2"
-                                           Grid.Column="0"
+                                           Grid.Column="1"
                                            Grid.ColumnSpan="2"
                                            Margin="5"/>
                                 </Grid>

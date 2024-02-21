@@ -18,27 +18,6 @@ namespace CadastroCliente.ViewModels
         public MainPageViewModel()
         {
             costumers = new ObservableCollection<Costumer>();
-            AddBaseCostumers();
-        }
-
-        private void AddBaseCostumers()
-        {
-            costumers = new ObservableCollection<Costumer> {
-                new Costumer
-                {
-                    Name = "Henrique",
-                    LastName = "Araujo",
-                    Age = 24,
-                    Address = "Av Parana, 1627"
-                },
-                new Costumer
-                {
-                    Name = "Caroline",
-                    LastName = "Pintinha",
-                    Age = 23,
-                    Address = "Av Campos Sales, 299"
-                }
-            };
         }
 
         [RelayCommand]
