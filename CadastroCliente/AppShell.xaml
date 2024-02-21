@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CadastroCliente"
     Shell.FlyoutBehavior="Disabled"
-    Title="CadastroCliente">
+    Title="Cadastro de Clientes - Henrique Araujo">
 
     <ShellContent
-        Title="2º Teste Técnico - Henrique - BTG PACTUAL"
+        Title="2º Teste Técnico - BTG Pactual"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
