@@ -41,10 +41,12 @@ namespace CadastroCliente.ViewModels
         }
 
         [RelayCommand]
-        async Task GoBack()
+        async Task GoBack() => await Shell.Current.GoToAsync("..");
+
+        private void UpdateCostumerList()
         {
-            Console.WriteLine(mainPageViewModel.costumers[0].Name);
-            await Shell.Current.GoToAsync("..");
+            int index = mainPageViewModel.Costumers.IndexOf(costumer);
+            mainPageViewModel.Costumers[index] = costumer;
         }
 
         #region ENTRY QUALITY METHODS
@@ -80,11 +82,5 @@ namespace CadastroCliente.ViewModels
             }
         }
         #endregion
-
-        private void UpdateCostumerList()
-        {
-            int index = mainPageViewModel.Costumers.IndexOf(costumer);
-            mainPageViewModel.Costumers[index] = costumer;
-        }
     }
 }

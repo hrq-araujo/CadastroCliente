@@ -31,10 +31,7 @@ namespace CadastroCliente.ViewModels
         Costumer newCostumer;
 
         [RelayCommand]
-        async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("..");
-        }
+        async Task GoBack() => await Shell.Current.GoToAsync("..");
 
         [RelayCommand]
         async Task Save()
